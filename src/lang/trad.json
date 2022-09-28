@@ -1,0 +1,44 @@
+{
+  "fr": {
+    "common": {
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "search": "Rechercher",
+      "filter": "Filtrer",
+      "close": "Fermer",
+      "yes": "Oui",
+      "no": "Non"
+    },
+    "user": {
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "password_confirmation": "Confirmation du mot de passe",
+      "avatar": "Avatar"
+    }
+  },
+  "en": {
+    "common": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "search": "Search",
+      "filter": "Filter",
+      "close": "Close",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "user": {
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "email": "Email",
+      "password": "Password",
+      "password_confirmation": "Password confirmation",
+      "avatar": "Avatar"
+    }
+  }
+}
