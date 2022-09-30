@@ -8,7 +8,6 @@ import Projects from "../screens/Projects";
 import Tasks from "../screens/Tasks";
 import Profile from "../screens/Profile";
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Routes = () => {

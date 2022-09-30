@@ -1,11 +1,20 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
-const Btn = () => {
+const Btn = ({ title, action, color, textColor }) => {
   return (
-    <View>
-      <Text>Btn</Text>
-    </View>
+    <TouchableOpacity onPress={action}>
+      <View
+        style={{
+          backgroundColor: color,
+          paddingVertical: 8,
+          paddingHorizontal: 16,
+          borderRadius: 6,
+        }}
+      >
+        <Text style={{ color: textColor, textAlign: "center" }}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

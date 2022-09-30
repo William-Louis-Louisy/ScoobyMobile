@@ -9,7 +9,13 @@
       "filter": "Filtrer",
       "close": "Fermer",
       "yes": "Oui",
-      "no": "Non"
+      "no": "Non",
+      "emailPlaceHolder": "Entrer votre email",
+      "passwordPlaceHolder": "Entrer votre mot de passe",
+      "signIn": "Se connecter",
+      "signUp": "S'inscrire",
+      "signOut": "Se déconnecter",
+      "notRegistered": "Pas encore inscrit ?"
     },
     "user": {
       "firstname": "Prénom",
@@ -30,7 +36,13 @@
       "filter": "Filter",
       "close": "Close",
       "yes": "Yes",
-      "no": "No"
+      "no": "No",
+      "emailPlaceHolder": "Enter your email",
+      "passwordPlaceHolder": "Enter your password",
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "signOut": "Sign out",
+      "notRegistered": "Not registered yet ?"
     },
     "user": {
       "firstname": "Firstname",
