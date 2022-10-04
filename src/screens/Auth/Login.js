@@ -50,7 +50,7 @@ const Login = () => {
   if (loading) {
     return (
       <View style={styles.loading}>
-        <Text style={styles.loadingText}>CHARGEMENT</Text>
+        <Text style={styles.loadingText}>{trad[lang].common.loading}</Text>
         <ActivityIndicator size="large" color="white" />
       </View>
     );
@@ -102,7 +102,7 @@ const Login = () => {
             style={{
               marginTop: 16,
             }}
-            onPress={() => navigation.navigate("Register", {})}
+            onPress={() => navigation.navigate("Register")}
           >
             <Text style={styles.notRegisteredText}>
               {trad[lang].common.notRegistered}

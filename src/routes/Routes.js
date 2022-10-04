@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Tasks from "../screens/Tasks";
 import { THEMES } from "../../constants";
 import Profile from "../screens/Profile";
@@ -9,24 +9,29 @@ import Register from "../screens/Auth/Register";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import trad from "../lang/trad.json";
+import { Image } from "react-native";
+import { UserContext } from "../contexts/UserProvider";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const DashboardRoutes = () => {
+  const { lang } = useContext(UserContext);
+
   return (
     <Tab.Navigator
       initialRouteName="Dashboard"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "Dashboard") {
+          if (route.name === trad[lang].routes.dashboard) {
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "Projects") {
+          } else if (route.name === trad[lang].routes.projects) {
             iconName = focused ? "folder" : "folder-outline";
-          } else if (route.name === "Tasks") {
+          } else if (route.name === trad[lang].routes.tasks) {
             iconName = focused ? "clipboard-list" : "clipboard-list-outline";
-          } else if (route.name === "Profile") {
+          } else if (route.name === trad[lang].routes.profile) {
             iconName = focused ? "account-box" : "account-box-outline";
           }
           return (
@@ -38,12 +43,18 @@ const DashboardRoutes = () => {
         headerTitleStyle: { color: "#fff" },
         tabBarActiveTintColor: "#fff",
         tabBarInactiveTintColor: "#ADB5BD",
+        headerLeft: () => (
+          <Image
+            style={{ height: 64, width: 64 }}
+            source={require("../assets/iconexpo.png")}
+          />
+        ),
       })}
     >
-      <Tab.Screen name="Dashboard" component={Dashboard} />
-      <Tab.Screen name="Projects" component={Projects} />
-      <Tab.Screen name="Tasks" component={Tasks} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name={trad[lang].routes.dashboard} component={Dashboard} />
+      <Tab.Screen name={trad[lang].routes.projects} component={Projects} />
+      <Tab.Screen name={trad[lang].routes.tasks} component={Tasks} />
+      <Tab.Screen name={trad[lang].routes.profile} component={Profile} />
     </Tab.Navigator>
   );
 };
