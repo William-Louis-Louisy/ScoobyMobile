@@ -15,7 +15,14 @@
       "signIn": "Se connecter",
       "signUp": "S'inscrire",
       "signOut": "Se déconnecter",
-      "notRegistered": "Pas encore inscrit ?"
+      "notRegistered": "Pas encore inscrit ?",
+      "settings": "Paramètres",
+      "chooseLanguage": "Choisir la langue",
+      "logout": "Déconnexion",
+      "newProject": "Nouveau projet",
+      "name": "Nom",
+      "status": "Statut",
+      "actions": "Actions"
     },
     "user": {
       "firstname": "Prénom",
@@ -24,6 +31,54 @@
       "password": "Mot de passe",
       "password_confirmation": "Confirmation du mot de passe",
       "avatar": "Avatar"
+    },
+    "toasts": {
+      "oops": "Oups !",
+      "success": "Succès !",
+      "welcome": "Bienvenue",
+      "userConnected": "Utilisateur connecté",
+      "userDisconnected": "Utilisateur déconnecté",
+      "userCreated": "Utilisateur créé avec succès",
+      "userUpdated": "Utilisateur mis à jour avec succès",
+      "userNotValidCredentials": "Utilisateur non valide, vérifiez vos identifiants",
+      "projectCreated": "Projet créé avec succès",
+      "projectUpdated": "Projet mis à jour avec succès",
+      "projectDeleted": "Projet supprimé avec succès",
+      "somethingWentWrong": "Quelque chose s'est mal passé, veuillez réessayer"
+    },
+    "stats": {
+      "totalTasks": "Total des tâches",
+      "totalProjects": "Total des projets",
+      "completed": "effectuées",
+      "workedOn": "réalisés"
+    },
+    "dashboard": {
+      "currentProjects": "Projets en cours",
+      "currentTasks": "Tâches en cours"
+    },
+    "statusChecker": {
+      "done": "Terminé",
+      "inProgress": "En cours",
+      "notStarted": "Non commencé"
+    },
+    "projectCard": {
+      "managedBy": "Géré par",
+      "dueDate": "Date de livraison",
+      "status": "Statut"
+    },
+    "projects": {
+      "managedByMe": "Gérés par moi",
+      "hideDone": "Cacher les terminés",
+      "noProjects": "Aucun projet",
+      "projectCreation": "Création d'un projet",
+      "projectEdition": "Edition d'un projet",
+      "enterProjectName": "Entrer le nom du projet",
+      "addCollaborator": "Ajouter des collaborateurs",
+      "addDescription": "Ajouter une description",
+      "defineDueDate": "Définir une date de livraison",
+      "fillAllFields": "Veuillez remplir tous les champs",
+      "currentStatus": "Statut actuel",
+      "editStatus": "Modifier le statut"
     }
   },
   "en": {
@@ -42,7 +97,14 @@
       "signIn": "Sign in",
       "signUp": "Sign up",
       "signOut": "Sign out",
-      "notRegistered": "Not registered yet ?"
+      "notRegistered": "Not registered yet ?",
+      "settings": "Settings",
+      "chooseLanguage": "Choose language",
+      "logout": "Logout",
+      "newProject": "New project",
+      "name": "Name",
+      "status": "Status",
+      "actions": "Actions"
     },
     "user": {
       "firstname": "Firstname",
@@ -51,6 +113,54 @@
       "password": "Password",
       "password_confirmation": "Password confirmation",
       "avatar": "Avatar"
+    },
+    "toasts": {
+      "oops": "Oops !",
+      "success": "Success !",
+      "welcome": "Welcome",
+      "userConnected": "User connected",
+      "userDisconnected": "User disconnected",
+      "userCreated": "User created successfully",
+      "userUpdated": "User updated successfully",
+      "userNotValidCredentials": "Credentials not valid",
+      "projectCreated": "Project created successfully",
+      "projectUpdated": "Project updated successfully",
+      "projectDeleted": "Project deleted successfully",
+      "somethingWentWrong": "Something went wrong, please try again"
+    },
+    "stats": {
+      "totalTasks": "Total tasks",
+      "totalProjects": "Total projects",
+      "completed": "completed",
+      "workedOn": "worked on"
+    },
+    "dashboard": {
+      "currentProjects": "Current projects",
+      "currentTasks": "Current tasks"
+    },
+    "statusChecker": {
+      "done": "Done",
+      "inProgress": "In progress",
+      "notStarted": "Not started"
+    },
+    "projectCard": {
+      "managedBy": "Managed by",
+      "dueDate": "Due date",
+      "status": "Status"
+    },
+    "projects": {
+      "managedByMe": "Managed by me",
+      "hideDone": "Hide done",
+      "noProjects": "No projects",
+      "projectCreation": "Project creation",
+      "projectEdition": "Project edition",
+      "enterProjectName": "Enter project name",
+      "addCollaborator": "Add collaborators",
+      "addDescription": "Add description",
+      "defineDueDate": "Define due date",
+      "fillAllFields": "Please fill all fields",
+      "currentStatus": "Current status",
+      "editStatus": "Edit status"
     }
   }
 }
