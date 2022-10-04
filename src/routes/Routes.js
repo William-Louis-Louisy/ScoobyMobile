@@ -1,16 +1,19 @@
 import React from "react";
+import Tasks from "../screens/Tasks";
 import { THEMES } from "../../constants";
+import Profile from "../screens/Profile";
+import Login from "../screens/Auth/Login";
+import Projects from "../screens/Projects";
+import Dashboard from "../screens/Dashboard";
+import Register from "../screens/Auth/Register";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Dashboard from "../screens/Dashboard";
-import Projects from "../screens/Projects";
-import Tasks from "../screens/Tasks";
-import Profile from "../screens/Profile";
 
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const Routes = () => {
+const DashboardRoutes = () => {
   return (
     <Tab.Navigator
       initialRouteName="Dashboard"
@@ -42,6 +45,21 @@ const Routes = () => {
       <Tab.Screen name="Tasks" component={Tasks} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
+  );
+};
+
+const Routes = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName="Login"
+    >
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="DashboardRoutes" component={DashboardRoutes} />
+    </Stack.Navigator>
   );
 };
 

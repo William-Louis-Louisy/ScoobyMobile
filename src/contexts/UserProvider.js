@@ -1,11 +1,14 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { API_URL } from "../../constants";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
+import { createContext, useEffect, useRef, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import trad from "../lang/trad.json";
 
 export const UserContext = createContext(null);
 
 const UserProvider = ({ children }) => {
+  const isLogged = useRef(false);
   const [user, setUser] = useState({
     _id: "",
     avatar: "",
@@ -17,22 +20,39 @@ const UserProvider = ({ children }) => {
 
   // STORE USER IN ASYNC STORAGE
   const storeUser = async (value) => {
-    console.log("storeUser", value);
     try {
       await AsyncStorage.setItem("user-avatar", value.avatar);
       await AsyncStorage.setItem("user-firstname", value.firstname);
       await AsyncStorage.setItem("user-lastname", value.lastname);
       await AsyncStorage.setItem("user-email", value.email);
       await AsyncStorage.setItem("user-id", value._id);
+      setUser(value);
+      Toast.show({
+        type: "success",
+        text1: trad[lang].toasts.welcome,
+        text2: trad[lang].toasts.userConnected,
+        position: "top",
+        visibilityTime: 4000,
+        autoHide: true,
+        topOffset: 80,
+      });
     } catch (error) {
       console.log(error);
+      Toast.show({
+        type: "error",
+        text1: trad[lang].toasts.oops,
+        text2: trad[lang].toasts.userNotValidCredentials,
+        position: "top",
+        visibilityTime: 4000,
+        autoHide: true,
+        topOffset: 80,
+      });
     }
   };
 
   useEffect(() => {
     const getUserData = async () => {
       try {
-        console.log("ICI");
         setUser({
           _id: await AsyncStorage.getItem("user-id"),
           avatar: await AsyncStorage.getItem("user-avatar"),
@@ -57,14 +77,43 @@ const UserProvider = ({ children }) => {
       email: "",
     });
     AsyncStorage.clear();
-    window.location.replace("/");
   };
 
-  console.log("USER : ", user);
+  // STORE LANGUAGE IN ASYNSTORAGE
+  const storeLang = async (lang) => {
+    try {
+      await AsyncStorage.setItem("lang", lang);
+      setLang(lang);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // GET LANGUAGE FROM ASYNSTORAGE
+  useEffect(() => {
+    const getLang = async () => {
+      try {
+        const data = await AsyncStorage.getItem("lang");
+        data && setLang(data || lang);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getLang();
+  }, []);
 
   return (
     <UserContext.Provider
-      value={{ lang, user, setLang, setUser, logOut, storeUser }}
+      value={{
+        isLogged,
+        lang,
+        user,
+        setLang,
+        setUser,
+        logOut,
+        storeUser,
+        storeLang,
+      }}
     >
       {children}
     </UserContext.Provider>

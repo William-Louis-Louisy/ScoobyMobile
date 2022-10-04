@@ -6,26 +6,31 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  Dimensions,
+  ActivityIndicator,
 } from "react-native";
 import axios from "axios";
 import trad from "../../lang/trad.json";
 import { API_URL, THEMES } from "../../../constants";
 import Btn from "../../components/common/Btn";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { UserContext } from "../../contexts/UserProvider";
 
 const Login = () => {
   const navigation = useNavigation();
-  const { storeUser } = useContext(UserContext);
+  const { storeUser, user, lang } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
+    setLoading(true);
     e.preventDefault();
-    saveLoggedUser();
+    await saveLoggedUser();
+    setLoading(false);
   };
 
   const saveLoggedUser = async () => {
@@ -35,13 +40,25 @@ const Login = () => {
         password: loginForm.password,
       });
       if (data) {
-        console.log(data.user);
-        storeUser(data.user);
+        await storeUser(data.user);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  if (loading) {
+    return (
+      <View style={styles.loading}>
+        <Text style={styles.loadingText}>CHARGEMENT</Text>
+        <ActivityIndicator size="large" color="white" />
+      </View>
+    );
+  }
+
+  if (user._id !== "") {
+    navigation.navigate("DashboardRoutes");
+  }
 
   return (
     <ScrollView
@@ -56,14 +73,19 @@ const Login = () => {
       />
       <View style={styles.inputsBlock}>
         <TextInput
+          autoComplete="email"
+          keyboardType="email-address"
           style={styles.input}
-          placeholder={trad["fr"].common.emailPlaceHolder}
+          placeholder={trad[lang].common.emailPlaceHolder}
           placeholderTextColor={THEMES.PRIMARY}
           onChangeText={(text) => setLoginForm({ ...loginForm, email: text })}
         />
         <TextInput
+          autoComplete="password"
+          keyboardType="password"
           style={styles.input}
-          placeholder={trad["fr"].common.passwordPlaceHolder}
+          secureTextEntry={true}
+          placeholder={trad[lang].common.passwordPlaceHolder}
           placeholderTextColor={THEMES.PRIMARY}
           onChangeText={(text) =>
             setLoginForm({ ...loginForm, password: text })
@@ -71,7 +93,7 @@ const Login = () => {
         />
         <View style={styles.btnBlock}>
           <Btn
-            title={trad["fr"].common.signIn}
+            title={trad[lang].common.signIn}
             color={THEMES.PRIMARY}
             textColor={THEMES.WHITE}
             action={(e) => handleClick(e)}
@@ -83,7 +105,7 @@ const Login = () => {
             onPress={() => navigation.navigate("Register", {})}
           >
             <Text style={styles.notRegisteredText}>
-              {trad["fr"].common.notRegistered}
+              {trad[lang].common.notRegistered}
             </Text>
           </TouchableOpacity>
         </View>
@@ -124,6 +146,22 @@ const styles = StyleSheet.create({
   btnBlock: {
     width: "80%",
     marginTop: 16,
+  },
+  loading: {
+    flex: 1,
+    zIndex: 999,
+    position: "absolute",
+    backgroundColor: "rgba(0,0,0,0.8)",
+    height: Dimensions.get("window").height,
+    width: Dimensions.get("window").width,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 20,
   },
 });
 
